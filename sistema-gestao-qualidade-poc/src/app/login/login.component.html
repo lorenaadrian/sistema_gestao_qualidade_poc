@@ -1,0 +1,19 @@
+<div class="row align-items-center text-center">
+  <div class="col-sm-8 mx-auto">
+    <img class="rounded pt-2" [src]='urlImg' width="80%" height="80%">
+  </div>
+  <div class="col-sm-4">
+    <form class="form-signin" (ngSubmit)="onSubmit()">
+      <h4 class="mb-3 font-weight-normal">Sistema de Gestão da Qualidade</h4>
+      <p class="mt-5 mb-3 text-muted">Identifique-se para acessar o sistema</p>
+      <label for="inputEmail" class="sr-only">Informe seu usuário de rede</label>
+      <input type="text" id="inputLogin" name="inputLogin" [(ngModel)]="usuario.LoginName" class="form-control"
+        placeholder="Credenciais de rede" required autofocus>
+      <label for="inputPassword" class="sr-only">Informe sua senha</label>
+      <input type="password" id="inputPassword" name="inputPassword" [(ngModel)]="usuario.Password" class="form-control"
+        placeholder="Senha" required>
+      <p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+    </form>
+  </div>
+</div>

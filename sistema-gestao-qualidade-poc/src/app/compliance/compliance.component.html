@@ -1,0 +1,53 @@
+<div class="card-deck mb-3 text-center">
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">IAT 16949</h4>
+    </div>
+    <div class="card-body">
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>Foco no cliente</li>
+        <li>Satisfação do Cliente</li>
+        <li>Gestão de Relacionamento</li>
+        <li>Competência... e muito mais!</li>
+      </ul>
+      <button type="button" class="btn btn-lg btn-block btn-primary" (click)="onDownload('IAT16949', spin)">        
+        <span #spin class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>  
+        Clique e faça download!
+      </button>
+    </div>
+  </div>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">ISO 14001</h4>
+    </div>
+    <div class="card-body">
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>Gestão Ambiental</li>
+        <li>Sustentabilidade</li>
+        <li>Cadeia de Valor</li>
+        <li>Ciclo de Vida</li>
+      </ul>
+      <button type="button" class="btn btn-lg btn-block btn-primary" (click)="onDownload('ISO14001',spin1)">
+        <span #spin1 class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span> 
+        Clique e faça download!
+      </button>
+    </div>
+  </div>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">ISO 9000</h4>
+    </div>
+    <div class="card-body">
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>Gestão da Qualidade</li>
+        <li>Qualidade dos projetos</li>
+        <li>Sucesso Sustentado</li>
+        <li>Auditoria de sistema de gestão</li>
+      </ul>
+      <button type="button" class="btn btn-lg btn-block btn-primary" (click)="onDownload('ISO9000',spin2)">
+        <span #spin2 class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+      Clique e faça download!
+      </button>
+    </div>
+  </div>
+</div>

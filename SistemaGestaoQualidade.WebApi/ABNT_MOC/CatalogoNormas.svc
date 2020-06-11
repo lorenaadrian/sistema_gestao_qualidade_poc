@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="NORMAS_MOC.CatalogoNormas" CodeBehind="CatalogoNormas.svc.cs" %>

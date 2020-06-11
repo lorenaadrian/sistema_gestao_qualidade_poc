@@ -1,0 +1,45 @@
+<div class="d-none d-md-flex">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row text-center">
+        <div class="col-md-4 p-1">
+          <a routerLink="/nao-conformidade/novo" class="btn btn-light" data-toggle="tooltip" data-placement="right"
+            title="Cadastrar Não Conformidade" role="button" aria-pressed="true">Cadastrar não-conformidade </a>
+        </div>
+        <div class="col-md-4 p-1">
+          <a routerLink="." class="btn btn-light" data-toggle="tooltip" data-placement="left"
+            title="Cadastrar Análise Causa Raiz" role="button" aria-pressed="true">Cadastrar análise causa-raiz</a>
+        </div>
+        <div class="col-md-4 p-1">
+          <form class="form-inline">
+            <input class="form-control" readonly type="search" placeholder="Informe número" aria-label="Search">
+            <button class="btn btn-outline-primary " type="button" disabled>Buscar</button></form>
+        </div>
+      </div>
+      <!-- aqui o list -->
+    </div>
+  </div>
+</div>
+<div class="d-sm-block d-md-none">
+  <div class="row bg-light p-2">
+    <div class="col-6 text-center">
+      <a routerLink="/nao-conformidade/novo" class="btn btn-light border p-1" data-toggle="tooltip"
+        data-placement="right" title="Cadastrar Não Conformidade" role="button" aria-pressed="true">Cadastrar
+        não-conformidade </a>
+    </div>
+    <div class="col-6 text-center">
+      <a routerLink="." class="btn btn-light border p-1" data-toggle="tooltip" data-placement="left" [attr.disabled]
+        title="Cadastrar Análise Causa Raiz" role="button" aria-pressed="true">Cadastrar análise causa-raiz</a>
+    </div>
+    <div class="form-group row p-1">
+      <div class="col-8">
+        <input class="form-control" readonly type="search" placeholder="Informe número" aria-label="Search"></div>
+      <div class="col-4">
+        <button class="btn btn-outline-primary " type="button" disabled>Buscar</button></div>
+    </div>
+  </div>
+  <div class="col-12" *ngIf="listaNC ==null || listaNC.length == 0">
+      Aguarde...
+  </div>
+<!-- aqui o list -->
+</div>

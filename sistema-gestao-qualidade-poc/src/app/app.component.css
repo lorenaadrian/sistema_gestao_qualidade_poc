@@ -1,0 +1,17 @@
+.ng-invalid.ng-touched:not(form) {
+  border: 1px solid red;
+}
+.tAl {
+  vertical-align: middle;
+}
+
+.c {
+  text-align: center;
+}
+
+.r {
+  text-align: left;
+}
+.dataTables_empty {
+  display: none;
+}

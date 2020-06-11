@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark" *ngIf="showMenuNav">
+  <a class="navbar-brand" routerLink="principal">SGQ</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto" *ngFor="let menu of listMenu">
+      <li routerLinkActive="nav-item active" class="nav-item">
+        <a class="nav-link" [class.disabled]="!menu.isImplements" [routerLink]="menu.routerLink">{{menu.textRouter}} <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Olá {{ userName }}</a>
+      <div class="dropdown-menu" aria-labelledby="dropdown01">
+        <a class="dropdown-item" (click)="onClickEvent()" >Sair</a>
+      </div>        
+      </li>
+    </ul>
+  </div>
+</nav>
+<main role="main" class="container-lg pt-2">
+    <router-outlet></router-outlet>   
+</main>
