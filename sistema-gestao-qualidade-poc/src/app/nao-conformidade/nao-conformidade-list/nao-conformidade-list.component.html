@@ -1,167 +1,52 @@
 <div class="d-none d-md-flex">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row text-center">
-        <div class="col-md-4 p-1">
-          <a
-            routerLink="/nao-conformidade/novo"
-            class="btn btn-light"
-            data-toggle="tooltip"
-            data-placement="right"
-            title="Cadastrar Não Conformidade"
-            role="button"
-            aria-pressed="true"
-            >Cadastrar não-conformidade
-          </a>
-        </div>
-        <div class="col-md-4 p-1">
-          <a
-            routerLink="."
-            class="btn btn-light"
-            data-toggle="tooltip"
-            data-placement="left"
-            title="Cadastrar Análise Causa Raiz"
-            role="button"
-            aria-pressed="true"
-            >Cadastrar análise causa-raiz</a
-          >
-        </div>
-        <div class="col-md-4 p-1">
-          <form class="form-inline">
-            <input
-              class="form-control"
-              readonly
-              type="search"
-              placeholder="Informe número"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-primary" type="button" disabled>
-              Buscar
-            </button>
-          </form>
-        </div>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead class="text-center">
-            <tr>
-              <th scope="col">Número</th>
-              <th scope="col">Dt Ocorrência</th>
-              <th scope="col">Emitente</th>
-              <th scope="col">Descricao NC</th>
-              <th scope="col">Abrangência</th>
-              <th scope="col">Análise CR?</th>
-              <th scope="col" style="vertical-align: middle;">
-                Mais ações
-              </th>
-            </tr>
-          </thead>
-          <tbody *ngIf="listaNC == null || listaNC?.length == 0">
-            <tr>
-              <td colspan="7">Agurade...</td>
-            </tr>
-          </tbody>
-          <tbody
-            class="text-center"
-            *ngIf="listaNC != null || listaNC?.length != 0"
-          >
-            <tr *ngFor="let l of listaNC">
-              <th scope="row">{{ l.id }}</th>
-              <td>{{ l.dataNC }}</td>
-              <td>{{ l.emitenteNC }}</td>
-              <td style="text-align: left;">
-                {{ l.descricaoNC }}
-              </td>
-              <td style="text-align: left;">
-                {{ l.abrangenciaNC }}
-              </td>
-              <td *ngIf="l.temAnaliseCR">
-                <a
-                  class="nav-link"
-                  data-toggle="tooltip"
-                  data-placement="right"
-                  title="Abrir análise de causa raiz"
-                  role="button"
-                  aria-pressed="true"
-                  [routerLink]="['/analise-causa-raiz', l.id]"
-                  >Sim</a
-                >
-              </td>
-              <td *ngIf="!l.temAnaliseCR">Não</td>
-              <td>
-                <a
-                  [routerLink]="['/nao-conformidade', l.id]"
-                  class="btn btn-success btn-sm"
-                  data-toggle="tooltip"
-                  data-placement="right"
-                  title="Atualizar"
-                  role="button"
-                  aria-pressed="true"
-                  >Atualizar</a
-                >
-                <a
-                  class="btn btn-danger btn-sm"
-                  (click)="onClickEvent(l.id)"
-                  data-toggle="tooltip"
-                  data-placement="right"
-                  title="Cancelar"
-                  role="button"
-                  aria-pressed="true"
-                  >Cancelar</a
-                >
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="text-center">
+        <tr>
+          <th scope="col">Número</th>
+          <th scope="col">Dt Ocorrência</th>
+          <th scope="col">Emitente</th>
+          <th scope="col">Descricao NC</th>
+          <th scope="col">Abrangência</th>
+          <th scope="col">Análise CR?</th>
+          <th scope="col" style="vertical-align: middle;">
+            Mais ações
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngIf="listaNC == null || listaNC?.length == 0">
+        <tr>
+          <td colspan="7">Agurade...</td>
+        </tr>
+      </tbody>
+      <tbody class="text-center" *ngIf="listaNC != null || listaNC?.length != 0">
+        <tr *ngFor="let l of listaNC">
+          <th scope="row">{{ l.id }}</th>
+          <td>{{ l.dataNC }}</td>
+          <td>{{ l.emitenteNC }}</td>
+          <td style="text-align: left;">
+            {{ l.descricaoNC }}
+          </td>
+          <td style="text-align: left;">
+            {{ l.abrangenciaNC }}
+          </td>
+          <td *ngIf="l.temAnaliseCR">
+            <a class="nav-link" data-toggle="tooltip" data-placement="right" title="Abrir análise de causa raiz"
+              role="button" aria-pressed="true" [routerLink]="['/analise-causa-raiz', l.id]">Sim</a>
+          </td>
+          <td *ngIf="!l.temAnaliseCR">Não</td>
+          <td>
+            <a [routerLink]="['/nao-conformidade', l.id]" class="btn btn-success btn-sm" data-toggle="tooltip"
+              data-placement="right" title="Atualizar" role="button" aria-pressed="true">Atualizar</a>
+            <a class="btn btn-danger btn-sm" (click)="onClickEvent(l.id)" data-toggle="tooltip" data-placement="right"
+              title="Cancelar" role="button" aria-pressed="true">Cancelar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <div class="d-sm-block d-md-none">
-  <div class="row bg-light p-2">
-    <div class="col-6 text-center">
-      <a
-        routerLink="/nao-conformidade/novo"
-        class="btn btn-light border p-1"
-        data-toggle="tooltip"
-        data-placement="right"
-        title="Cadastrar Não Conformidade"
-        role="button"
-        aria-pressed="true"
-        >Cadastrar não-conformidade
-      </a>
-    </div>
-    <div class="col-6 text-center">
-      <a
-        routerLink="."
-        class="btn btn-light border p-1"
-        data-toggle="tooltip"
-        data-placement="left"
-        [attr.disabled]
-        title="Cadastrar Análise Causa Raiz"
-        role="button"
-        aria-pressed="true"
-        >Cadastrar análise causa-raiz</a
-      >
-    </div>
-    <div class="form-group row p-1">
-      <div class="col-8">
-        <input
-          class="form-control"
-          readonly
-          type="search"
-          placeholder="Informe número"
-          aria-label="Search"
-        />
-      </div>
-
-      <div class="col-4">
-        <button class="btn btn-outline-primary" type="button" disabled>
-          Buscar
-        </button>
-      </div>
-    </div>
-  </div>
   <div class="col-12" *ngIf="listaNC == null || listaNC.length == 0">
     Aguarde...
   </div>
@@ -175,9 +60,7 @@
         <div class="row d-inline">
           <h6 class="card-sub-title" *ngIf="lp.temAnaliseCR">
             Tem análise de Causa Raiz?
-            <a class="link" [routerLink]="['/analise-causa-raiz', lp.id]"
-              >Sim</a
-            >
+            <a class="link" [routerLink]="['/analise-causa-raiz', lp.id]">Sim</a>
           </h6>
           <h6 class="card-sub-title" *ngIf="!lp.temAnaliseCR">
             Tem análise de Causa Raiz? Não
@@ -186,27 +69,11 @@
         </div>
       </div>
       <div class="card-footer text-center">
-        <a
-          [routerLink]="['/nao-conformidade', lp.id]"
-          class="btn btn-success btn-sm"
-          data-toggle="tooltip"
-          data-placement="right"
-          title="Atualizar"
-          role="button"
-          aria-pressed="true"
-          >Atualizar</a
-        >
-        <a
-          class="btn btn-danger btn-sm"
-          (click)="onClickEvent(lp.id)"
-          data-toggle="tooltip"
-          data-placement="right"
-          title="Cancelar"
-          role="button"
-          aria-pressed="true"
-          >Cancelar</a
-        >
+        <a [routerLink]="['/nao-conformidade', lp.id]" class="btn btn-success btn-sm" data-toggle="tooltip"
+          data-placement="right" title="Atualizar" role="button" aria-pressed="true">Atualizar</a>
+        <a class="btn btn-danger btn-sm" (click)="onClickEvent(lp.id)" data-toggle="tooltip" data-placement="right"
+          title="Cancelar" role="button" aria-pressed="true">Cancelar</a>
       </div>
     </div>
-  </div>
+  </div>  
 </div>

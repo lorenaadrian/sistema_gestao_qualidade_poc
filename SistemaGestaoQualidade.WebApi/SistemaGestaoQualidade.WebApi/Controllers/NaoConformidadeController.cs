@@ -22,6 +22,14 @@ namespace NaoConformidadeModule.WebApi.Controllers
             return await _naoConformidadeRepository.GetAllAsync();
         }
 
+        [HttpPost]
+        [Route("byFilter")] 
+        public async Task<IEnumerable<NaoConformidade>> GetListByFilter([FromBody] NaoConformidade objSearch)
+        {
+            return await _naoConformidadeRepository.GetByFilter(objSearch);
+        }
+
+
         [HttpGet("{idNC}")]
         public async Task<NaoConformidade> GetById(int idNC)
         {

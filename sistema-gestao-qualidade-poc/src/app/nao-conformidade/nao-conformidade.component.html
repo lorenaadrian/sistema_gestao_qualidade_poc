@@ -1,7 +1,10 @@
 <div class="d-none d-md-flex">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 border p-1">
       <div class="row text-center">
+        <div class="col-md-4 p-1">
+          <span>O que você quer fazer?</span>
+        </div>
         <div class="col-md-4 p-1">
           <a routerLink="/nao-conformidade/novo" class="btn btn-light" data-toggle="tooltip" data-placement="right"
             title="Cadastrar Não Conformidade" role="button" aria-pressed="true">Cadastrar não-conformidade </a>
@@ -10,13 +13,35 @@
           <a routerLink="." class="btn btn-light" data-toggle="tooltip" data-placement="left"
             title="Cadastrar Análise Causa Raiz" role="button" aria-pressed="true">Cadastrar análise causa-raiz</a>
         </div>
-        <div class="col-md-4 p-1">
-          <form class="form-inline">
-            <input class="form-control" readonly type="search" placeholder="Informe número" aria-label="Search">
-            <button class="btn btn-outline-primary " type="button" disabled>Buscar</button></form>
-        </div>
       </div>
-      <!-- aqui o list -->
+    </div>
+    <div class="col-md-12 border p-1">
+      <div class="row text-center">
+        <div class="col-md-12 p-1">
+          <span>Pesquise pelo filtro abaixo ou apenas clique em <b>buscar</b></span>
+        </div>
+        <div class="col-md-12">
+          <small><i>Nota: A listagem sem filtros pode comprometer a performance do sistema. É recomendável incluir um
+              filtro de
+              busca!</i></small></div>
+      </div>
+    </div>
+    <div class="col-md-12 border p-1">
+      <form #fBusca="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+          <label class="col-md-2 col-sm-2 col-form-label" for="inputNumeroNC">Número NC: </label>
+          <div class="col-md-2 col-sm-10">
+            <input type="text" id="inputNumeroNC" class="form-control" name="inputNumeroNC" [(ngModel)]="buscaNC.id">
+          </div>
+          <label class="col-md-2 col-sm-2 col-form-label" for="inputData">Data abertura NC</label>
+          <div class="col-md-2 col-sm-10">
+            <input type="text" id="inputData" class="form-control" name="inputData" [(ngModel)]="buscaNC.dataNC">
+          </div>
+          <div class="col-md-2 col-sm-10">
+            <button class="btn btn-outline-primary " type="submit">Buscar</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -31,15 +56,34 @@
       <a routerLink="." class="btn btn-light border p-1" data-toggle="tooltip" data-placement="left" [attr.disabled]
         title="Cadastrar Análise Causa Raiz" role="button" aria-pressed="true">Cadastrar análise causa-raiz</a>
     </div>
-    <div class="form-group row p-1">
-      <div class="col-8">
-        <input class="form-control" readonly type="search" placeholder="Informe número" aria-label="Search"></div>
-      <div class="col-4">
-        <button class="btn btn-outline-primary " type="button" disabled>Buscar</button></div>
+  </div>
+  <div class="col-md-12 border p-1">
+    <div class="row text-center">
+      <div class="col-md-12 col-sm-10 p-1">
+        <span>Pesquise pelo filtro abaixo ou apenas clique em <b>buscar</b></span>
+      </div>
+    </div>
+    <div class="col-md-12 p-1">
+      <form #fBusca="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+          <label class="col-md-2 col-sm-2 col-form-label" for="inputNumeroNC">Número NC: </label>
+          <div class="col-md-2 col-sm-10">
+            <input type="text" id="inputNumeroNC" class="form-control" name="inputNumeroNC" [(ngModel)]="numeroNC">
+          </div>
+          <label class="col-md-2 col-sm-2 col-form-label" for="inputData">Data abertura NC</label>
+          <div class="col-md-2 col-sm-10">
+            <input type="text" id="inputData" class="form-control" name="inputData" [(ngModel)]="dataNC">
+          </div>
+          <div class="col-md-2 col-sm-10">
+            <button class="btn btn-outline-primary " type="submit">Buscar</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="col-12" *ngIf="listaNC ==null || listaNC.length == 0">
-      Aguarde...
+</div>
+<div class="row">
+  <div class="col-md-12 border">
+    <app-nao-conformidade-list [listaNC$]="retornoFiltro$"></app-nao-conformidade-list>
   </div>
-<!-- aqui o list -->
 </div>

@@ -13,7 +13,7 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent {
   
-  urlImg: string = "./../../assets/SGQ_LOGO1.png";
+  urlImg: string = "assets/SGQ_LOGO1.png";
   usuario: any = {
     LoginName: '',
     Password: ''

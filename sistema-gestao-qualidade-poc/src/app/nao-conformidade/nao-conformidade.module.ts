@@ -14,7 +14,13 @@ import { NaoConformidadeListComponent } from './nao-conformidade-list/nao-confor
     NaoConformidadeRoutingModule,
   ],
   exports: [],
-  declarations: [NaoConformidadeComponent, NaoConformidadeDetailComponent, NaoConformidadeListComponent],
-  providers: [NaoConformidadeService, DatePipe],
+  declarations: [
+    NaoConformidadeComponent, 
+    NaoConformidadeDetailComponent, 
+    NaoConformidadeListComponent
+  ],
+  providers: [
+    NaoConformidadeService, 
+    DatePipe],
 })
 export class NaoConformidadeModule {}

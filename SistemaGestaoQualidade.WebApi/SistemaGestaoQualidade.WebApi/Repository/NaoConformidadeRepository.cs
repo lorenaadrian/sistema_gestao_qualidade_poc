@@ -1,6 +1,9 @@
-﻿using NaoConformidadeModule.WebApi.Models;
+﻿using Dapper;
+using NaoConformidadeModule.WebApi.Models;
 using NaoConformidadeModule.WebApi.Shared;
+using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace NaoConformidadeModule.WebApi.Repository
 {
@@ -74,5 +77,14 @@ namespace NaoConformidadeModule.WebApi.Repository
 
         protected override string SelectAllQuery => $"SELECT * FROM {table_name} WHERE cancelouNC = 0";
 
+        public async Task<IEnumerable<NaoConformidade>> GetByFilter(NaoConformidade objSearch)
+        {
+            string query = $"SELECT * FROM {table_name} WHERE  cancelouNC = 0 ";
+            if (objSearch.id > 0)
+                query += " and id = " + objSearch.id;
+            if(!string.IsNullOrEmpty(objSearch.dataNC))
+                query += " and dataNC = '" + objSearch.dataNC + "'";
+            return await dbConn.QueryAsync<NaoConformidade>(new CommandDefinition(query));
+        }
     }
 }

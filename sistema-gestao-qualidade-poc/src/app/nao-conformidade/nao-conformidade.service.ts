@@ -57,4 +57,8 @@ export class NaoConformidadeService {
   insertCR(idNC: number){
     return this.http.get(`${environment.API_URL}causaraiz/${idNC}`).pipe(take(1));
   }
+
+  getListNCByFilter(filter:NaoConformidade){
+    return this.http.post<NaoConformidade[]>(`${environment.API_URL}naoconformidade/byFilter`,filter).pipe(take(1));
+  }
 }

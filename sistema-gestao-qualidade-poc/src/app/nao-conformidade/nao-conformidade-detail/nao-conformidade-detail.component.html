@@ -35,8 +35,8 @@
             </div>
         </div>
     </div>
-    <div class="form-group row align-items-center border p-2" *ngIf="showClassificacao" 
-    [ngClass]="{'is-invalid': showValidation}">
+    <div class="form-group row align-items-center border p-2" *ngIf="showClassificacao"
+        [ngClass]="{'is-invalid': showValidation}">
         <div class="col-md-6" *ngFor="let tipo of listaClassificacaoNC$ | async">
             <div class="row">
                 <div class="col-md-4 col-sm-6">
@@ -46,52 +46,51 @@
                 </div>
                 <div class="col-md-8 col-sm-6" *ngIf="tipo.tipoDominio === 'Causa'">
                     <div class="form-check form-check-inline p-1" *ngFor="let t of listaCausaNC">
-                        <input class="form-check-input p-2"  type="radio" id="{{ t.tipoDominio }}_{{t.id}}" 
-                        [ngClass]="{'is-invalid': showValidation && (fRNC.idCausaNC === 0 )}" 
-                            [value]="t.id" name="radioCausa" [(ngModel)]="fRNC.idCausaNC" />
+                        <input class="form-check-input p-2" type="radio" id="{{ t.tipoDominio }}_{{t.id}}"
+                            [ngClass]="{'is-invalid': showValidation && (fRNC.idCausaNC === 0 )}" [value]="t.id"
+                            name="radioCausa" [(ngModel)]="fRNC.idCausaNC" />
                         <label class="form-check-label p-2" for="{{t.tipoDominio}}{{t.id}}">{{t.descricao}}</label>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-6" *ngIf="tipo.tipoDominio === 'Estado'">
                     <div class="form-check form-check-inline p-1" *ngFor="let t of listaEstadoNC">
-                        <input class="form-check-input p-2" type="radio" id="{{ t.tipoDominio }}_{{t.id}}" 
-                        [ngClass]="{'is-invalid': showValidation && (fRNC.idEstadoNC === 0)}"
-                            [value]="t.id" name="radioEstado" [(ngModel)]="fRNC.idEstadoNC" />
+                        <input class="form-check-input p-2" type="radio" id="{{ t.tipoDominio }}_{{t.id}}"
+                            [ngClass]="{'is-invalid': showValidation && (fRNC.idEstadoNC === 0)}" [value]="t.id"
+                            name="radioEstado" [(ngModel)]="fRNC.idEstadoNC" />
                         <label class="form-check-label p-2" for="{{t.tipoDominio}}{{t.id}}">{{t.descricao}}</label>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-6" *ngIf="tipo.tipoDominio === 'Identificação'">
                     <div class="form-check form-check-inline p-1" *ngFor="let t of listaIdentificacaoNC">
-                        <input class="form-check-input p-2" type="radio" id="{{ t.tipoDominio }}_{{t.id}}" 
-                        [ngClass]="{'is-invalid': showValidation && (fRNC.idIdentificacaoNC === 0)}"
-                            [value]="t.id" name="radioIdentificacao" [(ngModel)]="fRNC.idIdentificacaoNC" />
+                        <input class="form-check-input p-2" type="radio" id="{{ t.tipoDominio }}_{{t.id}}"
+                            [ngClass]="{'is-invalid': showValidation && (fRNC.idIdentificacaoNC === 0)}" [value]="t.id"
+                            name="radioIdentificacao" [(ngModel)]="fRNC.idIdentificacaoNC" />
                         <label class="form-check-label p-2" for="{{t.tipoDominio}}{{t.id}}">{{t.descricao}}</label>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-6" *ngIf="tipo.tipoDominio === 'Intensidade'">
                     <div class="form-check form-check-inline p-1" *ngFor="let t of listaIntensidadeNC">
-                        <input class="form-check-input p-2" type="radio" id="{{ t.tipoDominio }}_{{t.id}}" 
-                        [ngClass]="{'is-invalid': showValidation && (fRNC.idIntensidadeNC === 0)}"
-                            [value]="t.id" name="radioIntensidade" [(ngModel)]="fRNC.idIntensidadeNC" />
+                        <input class="form-check-input p-2" type="radio" id="{{ t.tipoDominio }}_{{t.id}}"
+                            [ngClass]="{'is-invalid': showValidation && (fRNC.idIntensidadeNC === 0)}" [value]="t.id"
+                            name="radioIntensidade" [(ngModel)]="fRNC.idIntensidadeNC" />
                         <label class="form-check-label p-2" for="{{t.tipoDominio}}{{t.id}}">{{t.descricao}}</label>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-6" *ngIf="tipo.tipoDominio === 'Requisito'">
                     <div class="form-check form-check-inline p-1" *ngFor="let t of listaRequisitoNC">
-                        <input class="form-check-input p-2" type="radio" id="{{ t.tipoDominio }}_{{t.id}}" 
-                        [ngClass]="{'is-invalid': showValidation && (fRNC.idRequisitoNC === 0)}"
-                            [value]="t.id" name="radioRequisito" [(ngModel)]="fRNC.idRequisitoNC"
-                            (change)="buscaTipo()" />
+                        <input class="form-check-input p-2" type="radio" id="{{ t.tipoDominio }}_{{t.id}}"
+                            [ngClass]="{'is-invalid': showValidation && (fRNC.idRequisitoNC === 0)}" [value]="t.id"
+                            name="radioRequisito" [(ngModel)]="fRNC.idRequisitoNC" (change)="buscaTipo()" />
                         <label class="form-check-label p-2" for="{{t.tipoDominio}}{{t.id}}">{{t.descricao}}</label>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-6" *ngIf="tipo.tipoDominio === 'Tipo'">
                     <div class="form-group col-md-4" *ngIf="listaTipoRequisitoNC$">
-                        <select class="form-control" style="width:auto;" type="button" id="selectTipRequisito" 
-                        (change)="tipoSelect($event.target.value)" 
-                        [ngClass]="{'is-invalid': showValidation && (fRNC.idTipoRequisito === 0)}">
+                        <select class="form-control" style="width:auto;" type="button" id="selectTipRequisito"
+                            (change)="tipoSelect($event.target.value)"
+                            [ngClass]="{'is-invalid': showValidation && (fRNC.idTipoRequisito === 0)}">
                             <option>Selecione...</option>
-                            <option [value]="r.id"  *ngFor="let r of listaTipoRequisitoNC$ | async">{{r.descricao}}
+                            <option [value]="r.id" *ngFor="let r of listaTipoRequisitoNC$ | async">{{r.descricao}}
                             </option>
                         </select>
                     </div>
@@ -100,7 +99,8 @@
         </div>
     </div>
     <div class="is-invalid" *ngIf="showInputValidation">
-        <small id="inputsValidation"  *ngIf="showInputValidation" class="form-text text-muted is-invalid alert alert-danger">* Campos obrigatórios</small>
+        <small id="inputsValidation" *ngIf="showInputValidation"
+            class="form-text text-muted is-invalid alert alert-danger">* Campos obrigatórios</small>
     </div>
     <div class="form-group row align-items-center border p-2" *ngIf="!showClassificacao && listaClassificacaoNC$">
         <div class="col-md-4 col-sm-6" *ngFor="let l of listaClassificacaoNC$ | async">
@@ -130,14 +130,16 @@
         <div class="col-lg-12 col-sm-4">
             <label for="detalheRNC" class="col-form-label p-2">* Detalhes Não Conformidade: </label>
             <input type="text" class="form-control" id="descricao_NC" name="descricao_NC" #detalheRNC="ngModel"
-                [(ngModel)]="fRNC.descricaoNC" required maxlength="200" [readOnly]="isReadOnly" />
+                [ngClass]="{'is-invalid': showValidation}" [(ngModel)]="fRNC.descricaoNC" required maxlength="200"
+                [readOnly]="isReadOnly" />
             <small id="detalheRNCHelpBlock" class="form-text text-muted alert alert-danger"
                 *ngIf="!detalheRNC.valid && showValidation">O campo Detalhes Não Conformidade é obrigatório</small>
         </div>
         <div class="col-lg-12 col-sm-4">
             <label for="abrangenciaRNC" class="col-form-label p-2">* Abrangência: </label>
             <input type="text" class="form-control" id="abrangencia_NC" name="abrangencia_NC" #abrangenciaRNC="ngModel"
-                [(ngModel)]="fRNC.abrangenciaNC" required maxlength="200" [readOnly]="isReadOnly" />
+                [ngClass]="{'is-invalid': showValidation}" [(ngModel)]="fRNC.abrangenciaNC" required maxlength="200"
+                [readOnly]="isReadOnly" />
             <small id="abrangenciaRNCHelpBlock" class="form-text text-muted alert alert-danger"
                 *ngIf="!abrangenciaRNC.valid && showValidation">O campo Abrangência é obrigatório</small>
         </div>
@@ -167,7 +169,7 @@
         <div class="col">
             <div class="form-check align-items-center">
                 <input type="checkbox" class="form-check-input" id="tem_Analise_CR" name="tem_Analise_CR"
-                    [(ngModel)]="fRNC.temAnaliseCR" [disabled]="fRNC.id > 0"  />
+                    [(ngModel)]="fRNC.temAnaliseCR" [disabled]="fRNC.id > 0" />
                 <label class="form-check-label" for="necessidadeAnaliseCausaRaiz">É necessária análise de causa
                     raiz</label>
             </div>
