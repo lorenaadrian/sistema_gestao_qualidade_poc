@@ -26,7 +26,7 @@ export class LoginService {
           sessionStorage.setItem('accessToken', res.accessToken);
           sessionStorage.setItem('isAuthorized', res.isAuthorized);
           sessionStorage.setItem('userName', res.dataEntity.userName);
-          sessionStorage.setItem('userCredencial', res.dataEntity.userCredencial)
+          sessionStorage.setItem('userCredencial', res.dataEntity.userCredencial);
           
           if (res.isAuthorized){
             this.isAutorized = true;
@@ -38,8 +38,7 @@ export class LoginService {
             this.isAutorized = false;
             this.showMenuEmitter.emit(false);
           }
-        },
-        err => { alert(err.status) }
+        }
       );
   }
 

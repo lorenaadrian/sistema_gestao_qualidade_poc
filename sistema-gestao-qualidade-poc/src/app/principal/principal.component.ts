@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
-  urlImg: string = "./../../assets/SGQ_LOGO1.png";
+  urlImg: string = "assets/SGQ_LOGO1.png";
   userName: string = sessionStorage.getItem('userName');
   constructor() { }
 

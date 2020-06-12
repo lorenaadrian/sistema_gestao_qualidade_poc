@@ -27,7 +27,7 @@ export class NaoConformidadeService {
   }
 
   getListClassificacaoByDominio(dominio:string){
-    return this.http.get<ClassificacaoNaoConformidade[]>(`${environment.API_URL}classificacaonaoconformidade/${dominio}/dominio`)
+    return this.http.get<ClassificacaoNaoConformidade[]>(`${environment.API_URL}classificacaonaoconformidade/${dominio}/dominio`).pipe(take(1));
   }
 
   getTipoRequisito(id:number){
@@ -45,7 +45,6 @@ export class NaoConformidadeService {
   }
   getNCById(idNC:number){
     return this.http.get<NaoConformidade>(`${environment.API_URL}naoconformidade/${idNC}`).pipe(take(1));
-
   }
   setUpdateNC(naoConformidade: NaoConformidade){
     return this.http.put(`${environment.API_URL}naoconformidade`, naoConformidade).pipe(take(1));

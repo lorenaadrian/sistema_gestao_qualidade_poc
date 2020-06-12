@@ -34,6 +34,7 @@ export class ComplianceComponent implements OnInit {
         }        
       },
       (err) => {
+        console.log(err);
         alert(err.status);
       }, () => {spin.style.display = "none";}
     );

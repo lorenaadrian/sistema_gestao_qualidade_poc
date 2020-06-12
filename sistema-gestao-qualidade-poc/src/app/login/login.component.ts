@@ -1,8 +1,5 @@
-import { AuthorizationUser } from '../Models/authorization-user';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { pipe } from 'rxjs';
-import { take } from 'rxjs/operators';
 
 import { LoginService } from './login.service';
 

@@ -1,6 +1,6 @@
 import { LoginService } from './../login/login.service';
 import { Observable } from 'rxjs';
-import { NgModule, Injectable } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   HttpInterceptor,
@@ -22,7 +22,7 @@ import {
       multi: true,
     },]
 })
-@Injectable()
+//@Injectable()
 
 export class RequestInterceptorModule implements HttpInterceptor {
   private token: string;

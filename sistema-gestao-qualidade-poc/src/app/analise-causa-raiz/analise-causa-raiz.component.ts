@@ -79,7 +79,7 @@ export class AnaliseCausaRaizComponent implements OnInit, OnDestroy {
                 if (lac !=null && lac.length > 0)
                 this.showAcaoCorretiva = true
               }
-            )
+            );
           });
         });
       }    

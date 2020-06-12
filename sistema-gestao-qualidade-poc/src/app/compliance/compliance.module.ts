@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ComplianceComponent } from './compliance.component';
 import { ComplianceService } from './compliance.service';
 
-
 @NgModule({
   declarations: [ComplianceComponent],
   imports: [

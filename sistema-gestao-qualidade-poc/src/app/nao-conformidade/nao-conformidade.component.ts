@@ -44,10 +44,12 @@ export class NaoConformidadeComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.numeroNC > 0) this.buscaNC.id = this.numeroNC;
-    if (this.dataNC != "") this.buscaNC.dataNC = this.dataNC;
-    this.retornoFiltro$ = this.naoConformidadeService.getListNCByFilter(
-      this.buscaNC
-    );
+    if (this.numeroNC > 0){
+       this.buscaNC.id = this.numeroNC;
+    }
+    if (this.dataNC != "") {
+      this.buscaNC.dataNC = this.dataNC;
+    }
+    this.retornoFiltro$ = this.naoConformidadeService.getListNCByFilter(this.buscaNC);
   }
 }

@@ -6,7 +6,6 @@ import { AnaliseCausaRaizRoutingModule } from './analise-causa-raiz.routing.modu
 import { AnaliseCausaRaizService } from './analise-causa-raiz.service';
 import { NaoConformidadeService } from '../nao-conformidade/nao-conformidade.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

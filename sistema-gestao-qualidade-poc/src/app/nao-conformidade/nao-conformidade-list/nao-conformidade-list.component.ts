@@ -18,14 +18,12 @@ export class NaoConformidadeListComponent implements OnInit, OnChanges  {
     private router: Router
   ) {}
 
-  ngOnInit(): void { console.log("passou aqui");
-  }
+  ngOnInit(): void { }
 
   ngOnChanges(changes){
       if(changes["listaNC$"] && this.listaNC$){
         this.listaNC$.subscribe(
           (ret:NaoConformidade[])=>{
-            console.log(ret);
             this.listaNC = ret;
           }
         );
