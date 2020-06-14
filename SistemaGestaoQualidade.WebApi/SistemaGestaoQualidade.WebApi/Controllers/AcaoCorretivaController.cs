@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NaoConformidadeModule.WebApi.Models;
-using NaoConformidadeModule.WebApi.Repository;
+using SistemaGestaoQualidade.WebApi.Models;
+using SistemaGestaoQualidade.WebApi.Contracts;
+using Microsoft.AspNetCore.Authorization;
 
-namespace NaoConformidadeModule.WebApi.Controllers
+namespace SistemaGestaoQualidade.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -21,6 +19,7 @@ namespace NaoConformidadeModule.WebApi.Controllers
 
         [HttpGet]
         [Route("{idCR}/causaraiz")]
+        [Authorize]
         public async Task<IEnumerable<AcaoCorretiva>> GetAcaoCorretivaByCausaRaiz(int idCR)
         {
             return await _acaoCorretivaRepository.GetAcaoByCR(idCR);

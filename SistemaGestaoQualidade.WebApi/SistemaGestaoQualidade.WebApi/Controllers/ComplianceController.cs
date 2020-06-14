@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NaoConformidadeModule.WebApi.Repository;
+using SistemaGestaoQualidade.WebApi.Contracts;
 
-namespace NaoConformidadeModule.WebApi.Controllers
+namespace SistemaGestaoQualidade.WebApi.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
@@ -17,19 +18,29 @@ namespace NaoConformidadeModule.WebApi.Controllers
 
         [HttpGet]
         [Route("{fileName}")]
+        [Authorize]
+
         public async Task<ActionResult> GetNorma(string fileName)
         {
-            var retorno = await _catalogoNorma.GetNormaAsync(fileName);
-            if (retorno == null)
+            try
             {
-                return NotFound();
+                var retorno = await _catalogoNorma.GetNormaAsync(fileName);
+                if (retorno == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return File(Convert.FromBase64String(retorno),
+                                "application/pdf",
+                                string.Format("{0}.pdf", fileName));
+                }
             }
-            else
-            {                
-                return File(Convert.FromBase64String(retorno),
-                            "application/pdf",
-                            string.Format("{0}.pdf", fileName)); 
+            catch (Exception)
+            {
+                return new StatusCodeResult(503);
             }
+
         }
 
     }

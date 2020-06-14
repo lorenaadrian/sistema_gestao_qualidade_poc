@@ -1,7 +1,7 @@
-﻿using NaoConformidadeModule.WebApi.Shared;
+﻿using SistemaGestaoQualidade.WebApi.Shared;
 using System;
 
-namespace NaoConformidadeModule.WebApi.Models
+namespace SistemaGestaoQualidade.WebApi.Models
 {
     public class NaoConformidade : IIdentityEntity
     {

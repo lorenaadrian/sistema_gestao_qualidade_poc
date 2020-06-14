@@ -1,11 +1,11 @@
 ﻿using Dapper;
-using NaoConformidadeModule.WebApi.Models;
-using NaoConformidadeModule.WebApi.Shared;
+using SistemaGestaoQualidade.WebApi.Models;
+using SistemaGestaoQualidade.WebApi.Shared;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
-namespace NaoConformidadeModule.WebApi.Repository
+namespace SistemaGestaoQualidade.WebApi.Contracts
 {
 
     public class NaoConformidadeRepository : RepositoryAsync<NaoConformidade>, INãoConformidadeRepository

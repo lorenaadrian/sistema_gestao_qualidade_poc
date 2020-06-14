@@ -7,7 +7,7 @@
       <img class="p-1" [src]="urlImg" />
     </div>
   </div>
-  <div class="accordeon" id="acc1" *ngIf="id > 0">
+  <div class="accordeon" id="acc1" *ngIf=" inscricao && id > 0">
     <div class="form-group row align-items-center border p-2">
       <h2 class="mb-0">
         <button class="btn btn-light btn-block text-left" type="button" data-toggle="collapse"
@@ -103,7 +103,7 @@
       </div>
     </div>
   </div>
-  <div class="form-group row text-center border" *ngIf="id == 0">
+  <div class="form-group row text-center border" *ngIf="inscricao && id == 0">
     <div class="col-md-6 col-sm-12">
       <div class="row">
         <div class="col-md-4 col-sm-6 bg-light">

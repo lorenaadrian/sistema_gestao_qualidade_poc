@@ -9,16 +9,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1803 AS build
 WORKDIR /src
-COPY ["NaoConformidadeModule.WebApi/NaoConformidadeModule.WebApi.csproj", "NaoConformidadeModule.WebApi/"]
-RUN dotnet restore "NaoConformidadeModule.WebApi/NaoConformidadeModule.WebApi.csproj"
+COPY ["SistemaGestaoQualidade.WebApi/SistemaGestaoQualidade.WebApi.csproj", "SistemaGestaoQualidade.WebApi/"]
+RUN dotnet restore "SistemaGestaoQualidade.WebApi/SistemaGestaoQualidade.WebApi.csproj"
 COPY . .
-WORKDIR "/src/NaoConformidadeModule.WebApi"
-RUN dotnet build "NaoConformidadeModule.WebApi.csproj" -c Release -o /app/build
+WORKDIR "/src/SistemaGestaoQualidade.WebApi"
+RUN dotnet build "SistemaGestaoQualidade.WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "NaoConformidadeModule.WebApi.csproj" -c Release -o /app/publish
+RUN dotnet publish "SistemaGestaoQualidade.WebApi.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "NaoConformidadeModule.WebApi.dll"]
+ENTRYPOINT ["dotnet", "SistemaGestaoQualidade.WebApi.dll"]

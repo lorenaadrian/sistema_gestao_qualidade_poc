@@ -1,6 +1,6 @@
-﻿using NaoConformidadeModule.WebApi.Shared;
+﻿using SistemaGestaoQualidade.WebApi.Shared;
 
-namespace NaoConformidadeModule.WebApi.Models
+namespace SistemaGestaoQualidade.WebApi.Models
 {
     public class AcaoCorretiva : IIdentityEntity
     {

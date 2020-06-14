@@ -1,6 +1,6 @@
-﻿using NaoConformidadeModule.WebApi.Contracts;
+﻿using SistemaGestaoQualidade.WebApi.Contracts;
 
-namespace NaoConformidadeModule.WebApi.Models
+namespace SistemaGestaoQualidade.WebApi.Models
 {
     public class RouterUserModel: IRoutersUser
     {

@@ -1,4 +1,6 @@
-﻿namespace NaoConformidadeModule.WebApi.Models
+﻿using SistemaGestaoQualidade.WebApi.Shared;
+
+namespace SistemaGestaoQualidade.WebApi.Models
 {
     public sealed class AuthorizationResult: BaseResult<object>
     {

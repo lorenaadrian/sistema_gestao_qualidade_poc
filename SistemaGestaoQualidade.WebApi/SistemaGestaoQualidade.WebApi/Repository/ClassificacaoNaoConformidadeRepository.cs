@@ -1,13 +1,11 @@
-﻿using NaoConformidadeModule.WebApi.Shared;
-using NaoConformidadeModule.WebApi.Models;
+﻿using SistemaGestaoQualidade.WebApi.Shared;
+using SistemaGestaoQualidade.WebApi.Models;
 using System.Data;
 using System.Threading.Tasks;
-using System.ComponentModel;
 using System.Collections.Generic;
-using Microsoft.CodeAnalysis.Operations;
 using Dapper;
 
-namespace NaoConformidadeModule.WebApi.Repository
+namespace SistemaGestaoQualidade.WebApi.Contracts
 {
     public class ClassificacaoNaoConformidadeRepository : RepositoryAsync<ClassificacaoNaoConformidade>, IClassificacaoNaoConformidadeRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace NaoConformidadeModule.WebApi.Contracts
+﻿namespace SistemaGestaoQualidade.WebApi.Contracts
 {
     public interface IUser
     {

@@ -5,7 +5,7 @@ import {  take } from 'rxjs/operators';
 import { AuthorizationUser } from '../Models/authorization-user';
 import { Router } from '@angular/router';
 import { RouterUser } from '../Models/router-user';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'

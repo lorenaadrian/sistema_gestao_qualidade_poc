@@ -1,4 +1,4 @@
-﻿namespace NaoConformidadeModule.WebApi.Models
+﻿namespace SistemaGestaoQualidade.WebApi.Shared
 {
     public class BaseResult<T>
     {

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using NaoConformidadeModule.WebApi.Models;
-using NaoConformidadeModule.WebApi.Repository;
+using SistemaGestaoQualidade.WebApi.Models;
+using SistemaGestaoQualidade.WebApi.Contracts;
+using Microsoft.AspNetCore.Authorization;
 
-namespace NaoConformidadeModule.WebApi.Controllers
+namespace SistemaGestaoQualidade.WebApi.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
@@ -23,7 +24,7 @@ namespace NaoConformidadeModule.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("byFilter")] 
+        [Route("byFilter")]
         public async Task<IEnumerable<NaoConformidade>> GetListByFilter([FromBody] NaoConformidade objSearch)
         {
             return await _naoConformidadeRepository.GetByFilter(objSearch);
@@ -35,6 +36,7 @@ namespace NaoConformidadeModule.WebApi.Controllers
         {
             return await _naoConformidadeRepository.GetByIdAsync(idNC);
         }
+
         [HttpPost]
         public async Task<ActionResult<int>> PostNaoConformidade([FromBody] NaoConformidade naoConformidade)
         {

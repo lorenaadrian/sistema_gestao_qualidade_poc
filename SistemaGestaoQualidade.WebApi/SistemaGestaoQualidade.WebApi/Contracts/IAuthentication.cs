@@ -1,7 +1,8 @@
-﻿using NaoConformidadeModule.WebApi.Models;
+﻿using SistemaGestaoQualidade.WebApi.Models;
+using SistemaGestaoQualidade.WebApi.Shared;
 using System.Threading.Tasks;
 
-namespace NaoConformidadeModule.WebApi.Contracts
+namespace SistemaGestaoQualidade.WebApi.Contracts
 {
     public interface IAuthentication
     {

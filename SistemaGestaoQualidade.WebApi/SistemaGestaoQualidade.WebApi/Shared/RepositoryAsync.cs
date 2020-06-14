@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NaoConformidadeModule.WebApi.Shared
+namespace SistemaGestaoQualidade.WebApi.Shared
 {
     public class RepositoryAsync<T> : IRepositoryAsync<T> where T : class, IIdentityEntity
     {

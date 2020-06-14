@@ -1,8 +1,8 @@
-﻿using NaoConformidadeModule.WebApi.Contracts;
-using NaoConformidadeModule.WebApi.Models;
+﻿using SistemaGestaoQualidade.WebApi.Models;
+using SistemaGestaoQualidade.WebApi.Shared;
 using System.Threading.Tasks;
 
-namespace NaoConformidadeModule.WebApi.Repository
+namespace SistemaGestaoQualidade.WebApi.Contracts
 {
     public sealed class AuthenticationCore : IAuthentication
     {

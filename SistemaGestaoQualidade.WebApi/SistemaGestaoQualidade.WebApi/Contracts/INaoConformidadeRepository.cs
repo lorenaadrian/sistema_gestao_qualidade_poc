@@ -1,10 +1,9 @@
-﻿using NaoConformidadeModule.WebApi.Shared;
-using NaoConformidadeModule.WebApi.Models;
+﻿using SistemaGestaoQualidade.WebApi.Shared;
+using SistemaGestaoQualidade.WebApi.Models;
 using System.Threading.Tasks;
-using System.Collections;
 using System.Collections.Generic;
 
-namespace NaoConformidadeModule.WebApi.Repository
+namespace SistemaGestaoQualidade.WebApi.Contracts
 {
     /// <summary>
     /// Prevê o comportamento da entidade de não-conformidade do sistema

@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/NaoConformidadeModule.WebApi",
+      "applicationUrl": "http://localhost/SistemaGestaoQualidade.WebApi",
       "sslPort": 0
     },
     "iisExpress": {
@@ -19,7 +19,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "NaoConformidadeModule.WebApi": {
+    "SistemaGestaoQualidade.WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

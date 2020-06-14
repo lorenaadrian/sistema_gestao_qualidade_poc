@@ -32,7 +32,7 @@ export class RequestInterceptorModule implements HttpInterceptor {
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler, ): Observable<HttpEvent<any>> {
-    if (false) {
+    if (this.token != null) {
       const cloneReq = req.clone({
         setHeaders: {
           //'Content-Type': 'application/json; charset=utf-8'

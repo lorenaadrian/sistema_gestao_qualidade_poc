@@ -31,14 +31,14 @@
         <div class="form-group row">
           <label class="col-md-2 col-sm-2 col-form-label" for="inputNumeroNC">Número NC: </label>
           <div class="col-md-2 col-sm-10">
-            <input type="text" id="inputNumeroNC" class="form-control" name="inputNumeroNC" [(ngModel)]="buscaNC.id">
+            <input type="text" id="inputNumeroNC" class="form-control" name="inputNumeroNC" [(ngModel)]="numeroNC">
           </div>
           <label class="col-md-2 col-sm-2 col-form-label" for="inputData">Data abertura NC</label>
           <div class="col-md-2 col-sm-10">
-            <input type="text" id="inputData" class="form-control" name="inputData" [(ngModel)]="buscaNC.dataNC">
+            <input type="text" id="inputData" #inputData (keyup)="maskDate(inputData.value)" class="form-control" name="inputData" [(ngModel)]="dataNC">
           </div>
           <div class="col-md-2 col-sm-10">
-            <button class="btn btn-outline-primary " type="submit">Buscar</button>
+            <button class="btn btn-outline-primary " type="button" (click)="onSubmit()">Buscar</button>
           </div>
         </div>
       </form>
@@ -64,21 +64,19 @@
       </div>
     </div>
     <div class="col-md-12 p-1">
-      <form #fBusca="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group row">
-          <label class="col-md-2 col-sm-2 col-form-label" for="inputNumeroNC">Número NC: </label>
+          <label class="col-md-2 col-sm-2 col-form-label" for="inputNumeroNCSM">Número NC: </label>
           <div class="col-md-2 col-sm-10">
-            <input type="text" id="inputNumeroNC" class="form-control" name="inputNumeroNC" [(ngModel)]="numeroNC">
+            <input type="text" id="inputNumeroNCSM" class="form-control" name="inputNumeroNCSM" [(ngModel)]="numeroNC">
           </div>
-          <label class="col-md-2 col-sm-2 col-form-label" for="inputData">Data abertura NC</label>
+          <label class="col-md-2 col-sm-2 col-form-label" for="inputDataSM">Data abertura NC</label>
           <div class="col-md-2 col-sm-10">
-            <input type="text" id="inputData" class="form-control" name="inputData" [(ngModel)]="dataNC">
+            <input type="text" id="inputDataSM" #inputDataSM (keyup)="maskDate(inputDataSM.value)" class="form-control" name="inputDataSM" [(ngModel)]="dataNC">
           </div>
           <div class="col-md-2 col-sm-10">
-            <button class="btn btn-outline-primary " type="submit">Buscar</button>
+            <button class="btn btn-outline-primary" id="btnSM" type="button" (click)="onSubmit()">Buscar</button>
           </div>
         </div>
-      </form>
     </div>
   </div>
 </div>

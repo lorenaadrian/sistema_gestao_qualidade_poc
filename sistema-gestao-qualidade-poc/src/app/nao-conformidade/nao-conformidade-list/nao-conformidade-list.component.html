@@ -14,11 +14,16 @@
           </th>
         </tr>
       </thead>
-      <tbody *ngIf="listaNC == null || listaNC?.length == 0">
+      <tbody *ngIf="listaNC == null">
         <tr>
-          <td colspan="7">Agurade...</td>
+          <td colspan="7">Faça a sua busca</td>
         </tr>
       </tbody>
+      <tbody *ngIf="listaNC != null || listaNC?.length == 0">
+        <tr>
+          <td colspan="7">A pesquisa não retornou resultado!</td>
+        </tr>
+      </tbody>      
       <tbody class="text-center" *ngIf="listaNC != null || listaNC?.length != 0">
         <tr *ngFor="let l of listaNC">
           <th scope="row">{{ l.id }}</th>
@@ -47,8 +52,11 @@
   </div>
 </div>
 <div class="d-sm-block d-md-none">
-  <div class="col-12" *ngIf="listaNC == null || listaNC.length == 0">
-    Aguarde...
+  <div class="col-12" *ngIf="listaNC == null">
+    Faça a sua busca
+  </div>
+  <div class="col-12" *ngIf="listaNC != null && listaNC.length == 0">
+    A pesquisa não retornou resultados!..
   </div>
   <div class="row" *ngFor="let lp of listaNC">
     <div class="card" style="width: 100%;">

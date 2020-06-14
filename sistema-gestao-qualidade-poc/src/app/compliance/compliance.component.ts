@@ -33,10 +33,12 @@ export class ComplianceComponent implements OnInit {
           link.remove();          
         }        
       },
-      (err) => {
-        console.log(err);
-        alert(err.status);
-      }, () => {spin.style.display = "none";}
+      (err) => {       
+        console.log(err) ;
+        alert("No momento o módulo de consultas está indisponível. Já estamos trabalhando para sanar esse problema. Tente mais tarde!");
+        spin.style.display = "none";
+      }, () => {        
+        spin.style.display = "none";}
     );
   }
 }

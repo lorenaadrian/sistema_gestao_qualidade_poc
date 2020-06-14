@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NaoConformidadeModule.WebApi.Contracts;
-using NaoConformidadeModule.WebApi.Models;
+using SistemaGestaoQualidade.WebApi.Contracts;
+using SistemaGestaoQualidade.WebApi.Models;
 using System.Threading.Tasks;
 
-namespace NaoConformidadeModule.WebApi.Controllers
+namespace SistemaGestaoQualidade.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
         private readonly IAuthentication _authenticate;
-        private readonly IAuthorization _authorize;
+        private readonly IAuthorizationCore _authorize;
 
-        public LoginController(IAuthentication authenticate, IAuthorization authorize)
+        public LoginController(IAuthentication authenticate, IAuthorizationCore authorize)
         {
             _authenticate = authenticate;
             _authorize = authorize;

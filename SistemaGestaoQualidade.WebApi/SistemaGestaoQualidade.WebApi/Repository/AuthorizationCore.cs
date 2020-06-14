@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Tokens;
-using NaoConformidadeModule.WebApi.Contracts;
+﻿using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using SistemaGestaoQualidade.WebApi.Contracts;
 
-namespace NaoConformidadeModule.WebApi.Repository
+namespace SistemaGestaoQualidade.WebApi.Repository
 {
-    public sealed class AuthorizationCore : Contracts.IAuthorization
+    public sealed class AuthorizationCore : IAuthorizationCore
     {
+        private readonly string Secret = "4Bms3ZBc9GpI18k3yJR54Fcdj9IjP8iyKy3wTKsh+l5caz1OESmINdnYJw2Onf5fVouHSWKqs8EAsxa6jdUH0Q==";
         public async Task<Models.AuthorizationResult> AuthorizeAsync(IUser user)
         {
             //Aqui aplicaríamos regras específicas para autorização
@@ -24,23 +25,33 @@ namespace NaoConformidadeModule.WebApi.Repository
 
         private string GetAccessToken(IUser user)
         {
-            byte[] symmetricKey = Convert.FromBase64String("4Bms3ZBc9GpI18k3yJR54Fcdj9IjP8iyKy3wTKsh+l5caz1OESmINdnYJw2Onf5fVouHSWKqs8EAsxa6jdUH0Q==");
-            var handler = new JwtSecurityTokenHandler();
-            var securityToken = handler.CreateToken(new SecurityTokenDescriptor
+            try
             {
-                Subject = new ClaimsIdentity(new[]
+                var securityKey = Encoding.ASCII.GetBytes(Secret);
+                var subject = new ClaimsIdentity(new Claim[]
                         {
-                            new Claim(ClaimTypes.Name, user.UserName.ToString()),
-                            new Claim(ClaimTypes.Role, user.UserRole.ToString())
-                        }),
-                Issuer = "POCLACC",
-                Audience = "SGC_POC",
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(symmetricKey), SecurityAlgorithms.HmacSha256Signature),
-                NotBefore = DateTime.UtcNow,
-                Expires = DateTime.UtcNow + TimeSpan.FromSeconds(60000)
-            });
+                    new Claim(ClaimTypes.Name, user.UserName.ToString()),
+                    new Claim(ClaimTypes.Role, user.UserRole.ToString())
+                        });
+                var expires = DateTime.UtcNow.AddHours(2);
+                var signingCredential = new SigningCredentials(
+                        new SymmetricSecurityKey(securityKey),
+                        SecurityAlgorithms.HmacSha256Signature);
+                var tokenHandler = new JwtSecurityTokenHandler();
 
-            return handler.WriteToken(securityToken);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = subject,
+                    Expires = expires,
+                    SigningCredentials = signingCredential
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                return tokenHandler.WriteToken(token);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
     }
 }

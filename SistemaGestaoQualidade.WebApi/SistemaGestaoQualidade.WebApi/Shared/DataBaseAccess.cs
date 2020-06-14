@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-using NaoConformidadeModule.WebApi.Shared;
+using SistemaGestaoQualidade.WebApi.Shared;
 
-namespace NaoConformidadeModule.WebApi.Repository
+namespace SistemaGestaoQualidade.WebApi.Contracts
 {
     public class DataBaseAccess: IDatabaseAccess
     {

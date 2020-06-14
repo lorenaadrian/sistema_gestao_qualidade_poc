@@ -16,7 +16,7 @@ import { AcaoCorretiva } from "../Models/acao-corretiva";
 })
 export class AnaliseCausaRaizComponent implements OnInit, OnDestroy {
   urlImg: string = "./../../assets/SGQ_LOGO1p.png";
-  @Input() id: number = 0;
+  id: number = 0;
   showValidation: boolean = false;
   inscricao: Subscription;
   naoConformidade: NaoConformidade;

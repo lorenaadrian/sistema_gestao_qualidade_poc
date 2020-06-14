@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace NaoConformidadeModule.WebApi.Shared
+namespace SistemaGestaoQualidade.WebApi.Shared
 {
     /*
     Implementação baseada na solução proposta por Adler Pagliarini

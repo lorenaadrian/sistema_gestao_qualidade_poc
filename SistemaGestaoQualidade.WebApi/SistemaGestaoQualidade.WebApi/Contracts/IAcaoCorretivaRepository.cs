@@ -1,11 +1,9 @@
-﻿using NaoConformidadeModule.WebApi.Models;
-using NaoConformidadeModule.WebApi.Shared;
-using System;
+﻿using SistemaGestaoQualidade.WebApi.Models;
+using SistemaGestaoQualidade.WebApi.Shared;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace NaoConformidadeModule.WebApi.Repository
+namespace SistemaGestaoQualidade.WebApi.Contracts
 {
     public interface IAcaoCorretivaRepository : IRepositoryAsync<AcaoCorretiva>
     {

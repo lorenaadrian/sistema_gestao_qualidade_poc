@@ -1,4 +1,4 @@
-﻿namespace NaoConformidadeModule.WebApi.Models
+﻿namespace SistemaGestaoQualidade.WebApi.Models
 {
     public sealed class LoginCredencials
     {

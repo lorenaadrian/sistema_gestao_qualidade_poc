@@ -12,8 +12,8 @@ import { DatePipe } from "@angular/common";
   styleUrls: ["./nao-conformidade.component.css"],
 })
 export class NaoConformidadeComponent implements OnInit {
-  numeroNC: number = 0;
-  dataNC: string = "";
+  numeroNC: any = 0;
+  dataNC: string;
   buscaNC: NaoConformidade;
   retornoFiltro$: Observable<NaoConformidade[]>;
   constructor(
@@ -26,7 +26,7 @@ export class NaoConformidadeComponent implements OnInit {
     this.buscaNC = {
       abrangenciaNC: "",
       descricaoNC: "",
-      emitenteNC: sessionStorage.getItem("userName"),
+      emitenteNC: "",
       dataNC: "",
       id: 0,
       idCausaNC: 0,
@@ -44,12 +44,21 @@ export class NaoConformidadeComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.numeroNC > 0){
-       this.buscaNC.id = this.numeroNC;
-    }
-    if (this.dataNC != "") {
-      this.buscaNC.dataNC = this.dataNC;
-    }
+    console.log(this.numeroNC);
+    if(typeof this.numeroNC === undefined || this.numeroNC === null || this.numeroNC === ""){
+      console.log(this.numeroNC);
+      this.buscaNC.id = 0;
+    } else {this.buscaNC.id = this.numeroNC;}
+    if(typeof this.dataNC === undefined){
+        this.buscaNC.dataNC = "";
+        console.log(this.dataNC);
+    } else{this.buscaNC.dataNC = this.dataNC;}
     this.retornoFiltro$ = this.naoConformidadeService.getListNCByFilter(this.buscaNC);
+  }
+
+  maskDate(data: string) {
+    if (data.length == 2 || data.length == 5) {
+      this.dataNC = this.dataNC + "/";
+    }
   }
 }

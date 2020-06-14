@@ -1,7 +1,7 @@
-﻿using NaoConformidadeModule.WebApi.Contracts;
+﻿using SistemaGestaoQualidade.WebApi.Contracts;
 using System.Collections.Generic;
 
-namespace NaoConformidadeModule.WebApi.Models
+namespace SistemaGestaoQualidade.WebApi.Models
 {
     public class UserModel : IUser
     {

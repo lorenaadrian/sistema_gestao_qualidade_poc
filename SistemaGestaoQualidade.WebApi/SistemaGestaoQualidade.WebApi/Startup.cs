@@ -1,13 +1,16 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NaoConformidadeModule.WebApi.Contracts;
-using NaoConformidadeModule.WebApi.Repository;
-using NaoConformidadeModule.WebApi.Shared;
+using Microsoft.IdentityModel.Tokens;
+using SistemaGestaoQualidade.WebApi.Contracts;
+using SistemaGestaoQualidade.WebApi.Repository;
+using SistemaGestaoQualidade.WebApi.Shared;
 
-namespace NaoConformidadeModule.WebApi
+namespace SistemaGestaoQualidade.WebApi
 {
     public class Startup
     {
@@ -20,6 +23,7 @@ namespace NaoConformidadeModule.WebApi
         public IConfiguration Configuration { get; }
 
         readonly string SpecificOrigins = "_specificOrigins";
+        private readonly string Secret = "4Bms3ZBc9GpI18k3yJR54Fcdj9IjP8iyKy3wTKsh+l5caz1OESmINdnYJw2Onf5fVouHSWKqs8EAsxa6jdUH0Q==";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -34,9 +38,29 @@ namespace NaoConformidadeModule.WebApi
             services.AddScoped<IAcaoCorretivaRepository, AcaoCorretivaRepository>();
             services.AddScoped<ICatalogoNorma, CatalogoNorma>();
             services.AddSingleton<IAuthentication, AuthenticationCore>();
-            services.AddSingleton<IAuthorization, AuthorizationCore>();
+            services.AddSingleton<IAuthorizationCore, AuthorizationCore>();
 
             services.AddScoped<IDatabaseAccess, DataBaseAccess>();
+
+            var key = Encoding.ASCII.GetBytes(Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            })
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKeys = new[] { new SymmetricSecurityKey(key) },
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
             services.AddCors(options =>
             {
@@ -62,6 +86,7 @@ namespace NaoConformidadeModule.WebApi
 
             app.UseCors(SpecificOrigins);
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

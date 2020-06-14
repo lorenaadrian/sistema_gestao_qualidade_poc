@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: "http://lorenaadrian-001-site1.dtempurl.com/api/"
+  API_URL: "http://localhost:60105/api/"
 };
 
 /*

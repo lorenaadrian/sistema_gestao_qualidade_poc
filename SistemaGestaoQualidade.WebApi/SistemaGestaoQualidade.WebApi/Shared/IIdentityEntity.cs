@@ -1,4 +1,4 @@
-﻿namespace NaoConformidadeModule.WebApi.Shared
+﻿namespace SistemaGestaoQualidade.WebApi.Shared
 {
     public interface IIdentityEntity
     {

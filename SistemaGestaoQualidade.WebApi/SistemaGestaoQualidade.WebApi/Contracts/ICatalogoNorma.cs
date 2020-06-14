@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace NaoConformidadeModule.WebApi.Repository
+namespace SistemaGestaoQualidade.WebApi.Contracts
 {
     public interface ICatalogoNorma
     {

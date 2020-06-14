@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NaoConformidadeModule.WebApi.Models;
-using NaoConformidadeModule.WebApi.Repository;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+using SistemaGestaoQualidade.WebApi.Models;
+using SistemaGestaoQualidade.WebApi.Contracts;
 using System.Threading.Tasks;
 
-namespace NaoConformidadeModule.WebApi.Controllers
+namespace SistemaGestaoQualidade.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController]    
     public class CausaRaizController : ControllerBase
     {
         private ICausaRaizRepository _causaRaizRepository;
@@ -23,7 +23,7 @@ namespace NaoConformidadeModule.WebApi.Controllers
             return await _causaRaizRepository.GetCausaRaizByNC(idNC);
         }
 
-        [HttpGet]
+        [AcceptVerbs("GET")]
         [Route("{_idNC}")]
         public async Task<int>PostCausaRaiz(int _idNC)
         {
